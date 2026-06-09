@@ -5,6 +5,7 @@ import { MapPin, Phone, Mail, Clock, MessageCircle, Navigation, Star } from "luc
 import { clinic } from "@/lib/data/clinic";
 import { PageHero } from "@/components/site/page-hero";
 import { AppointmentForm } from "@/components/sections/appointment-form";
+import { MapEmbed } from "@/components/site/map-embed";
 import { Reveal } from "@/components/motion/reveal";
 
 export const metadata: Metadata = {
@@ -95,29 +96,9 @@ export default function ContactsPage() {
               </div>
             </Reveal>
 
-            {/* Map placeholder */}
+            {/* Map */}
             <Reveal delay={0.16}>
-              <Link
-                href={clinic.map.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative block aspect-[16/10] overflow-hidden rounded-3xl border border-border"
-              >
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,var(--surface),var(--graphite))]" />
-                <div className="absolute inset-0 opacity-30 [mask-image:radial-gradient(ellipse_at_center,black,transparent)]">
-                  <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-[size:40px_40px]" />
-                </div>
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                  <span className="relative flex size-5 items-center justify-center">
-                    <span className="absolute size-12 animate-pulse-ring rounded-full bg-mint/40" />
-                    <span className="size-4 rounded-full bg-mint shadow-[0_0_20px_4px] shadow-mint/50" />
-                  </span>
-                </div>
-                <span className="absolute bottom-5 left-5 flex items-center gap-2 rounded-full border border-border bg-graphite/80 px-4 py-2 text-sm backdrop-blur">
-                  <MapPin className="size-4 text-mint" />
-                  {clinic.address.full}
-                </span>
-              </Link>
+              <MapEmbed />
             </Reveal>
           </div>
 

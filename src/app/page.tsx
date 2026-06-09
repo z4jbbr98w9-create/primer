@@ -4,6 +4,7 @@ import { Stats } from "@/components/sections/stats";
 import { ServicesShowcase } from "@/components/sections/services-showcase";
 import { BeforeAfter } from "@/components/sections/before-after";
 import { Process } from "@/components/sections/process";
+import { Promotions } from "@/components/sections/promotions";
 import { Reviews } from "@/components/sections/reviews";
 import { TeamPreview } from "@/components/sections/team-preview";
 import { Marquee } from "@/components/site/marquee";
@@ -32,6 +33,7 @@ export default function Home() {
       <ServicesShowcase />
       <BeforeAfter />
       <Process />
+      <Promotions />
       <Reviews />
       <TeamPreview />
     </>
