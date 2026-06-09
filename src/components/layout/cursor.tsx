@@ -20,6 +20,8 @@ export function Cursor() {
   useEffect(() => {
     const fine = window.matchMedia("(pointer: fine)").matches;
     if (!fine) return;
+    // Client-only capability check — must run after mount, not during render.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setEnabled(true);
 
     const move = (e: MouseEvent) => {

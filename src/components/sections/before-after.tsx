@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useCallback } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { MoveHorizontal, Sparkles, ArrowUpRight } from "lucide-react";
@@ -35,7 +35,18 @@ function Smile({ shade }: { shade: string }) {
 export function BeforeAfter() {
   const ref = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState(50);
+  const [width, setWidth] = useState(0);
   const dragging = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const ro = new ResizeObserver(([entry]) =>
+      setWidth(entry.contentRect.width),
+    );
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
   const update = useCallback((clientX: number) => {
     const el = ref.current;
@@ -105,7 +116,7 @@ export function BeforeAfter() {
             >
               <div
                 className="absolute inset-0"
-                style={{ width: ref.current?.offsetWidth ?? "100%" }}
+                style={{ width: width || "100%" }}
               >
                 <div className="absolute right-5 top-5 z-10 rounded-full border border-border bg-graphite/80 px-3 py-1 text-xs font-medium text-muted-foreground">
                   До · A3

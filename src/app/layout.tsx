@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Manrope, Playfair_Display, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
+import { Toaster } from "sonner";
+
 import { SmoothScroll } from "@/components/layout/smooth-scroll";
 import { Cursor } from "@/components/layout/cursor";
 import { Header } from "@/components/layout/header";
@@ -76,6 +78,17 @@ export default function RootLayout({
           <Header />
           <main className="relative flex flex-col">{children}</main>
           <Footer />
+          <Toaster
+            position="bottom-right"
+            theme="dark"
+            toastOptions={{
+              style: {
+                background: "var(--popover)",
+                border: "1px solid var(--border)",
+                color: "var(--foreground)",
+              },
+            }}
+          />
         </SmoothScroll>
       </body>
     </html>
